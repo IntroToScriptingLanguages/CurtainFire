@@ -441,10 +441,10 @@ public class PlayerField : MonoBehaviour {
 
                         Vector3 source = PlayerField.getPosition(current.owner, true);
 
-                        //Will try to fit a four_card formation, if that doesn't work, the card list will be shrunk to allow a sixth card to fit.
+                        //Will try to fit a four_card formation, if that doesn't work, the card list will be shrunk to allow additional cards to fit.
                         if (count > 4)
                         {
-
+                            //MORE THAN FOUR CARDS
                             count--;
 
                             //Calculate the amount of space between each card
@@ -513,6 +513,7 @@ public class PlayerField : MonoBehaviour {
                         }
                         else
                         {
+                            //FOUR CARDS OR LESS
                             //Fixes formatting
                             int push_index = card_list.IndexOf(current);
 
@@ -549,6 +550,8 @@ public class PlayerField : MonoBehaviour {
                                 }
                             }
                         }
+
+                        
 
                         return current;
                     }

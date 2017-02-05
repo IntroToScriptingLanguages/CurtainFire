@@ -10,6 +10,8 @@ public enum Zone { None, BoardTop, BoardBottom, Hand, MainDeck, DiscardDeck, Inc
 
 public abstract class Card : MonoBehaviour {
 
+    public string cardName; //Card name
+
     static int cur_id = 0;
     public int cardID;
     int testInt;
@@ -17,7 +19,9 @@ public abstract class Card : MonoBehaviour {
     protected bool flipped; //If true, back is facing top
     public bool enableInput;
     Zone loc; //NOTE: Only used with Card.moveZone
+    public int spriteIndex; //Stores index of sprite in the sprite array
 
+    System.Random random = new System.Random();
 
     //Player owner, 0 is no one
     public int owner;
@@ -34,10 +38,12 @@ public abstract class Card : MonoBehaviour {
         flipped = false;
         enableInput = true;
 
+        cardName = "";
         cardID = cur_id;
         cur_id++;
 
         loc = Zone.None;
+        spriteIndex = 0;
     }
 
     IEnumerator ZoomIn()
@@ -113,7 +119,7 @@ public abstract class Card : MonoBehaviour {
     void Select()
     {
         //For testing LZ LZ LZ
-        this.flip();
+        this.moveZone(Zone.BoardBottom, random.Next(1, 8));
         //End testing
     }
 

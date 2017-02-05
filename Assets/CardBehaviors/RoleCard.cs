@@ -21,7 +21,7 @@ public class RoleCard : Card {
         {
             //Flip back
             CardCreator creator = GameObject.Find("Manager").GetComponent<CardCreator>();
-            creator.setArt(this.gameObject, "CardBacks/RolesB");
+            CardCreator.setArt(this.gameObject, "CardBacks/RolesB");
             flipped = true;
         }
         else

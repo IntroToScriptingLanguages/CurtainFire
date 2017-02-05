@@ -3,13 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SetupCards : MonoBehaviour {
+
+    const int NUM_INCIDENTS = 16;
+    const int NUM_MAINS = 60;
+    int num_characters = 8;
+
+    //Incidents
+    string[] incident_names =
+    {
+        "Crisis of Faith",
+        "Crossing to Higan",
+        "Endless Party",
+        "Eternal Night",
+        "Five Impossible Requests",
+        "Great Barrier Weakening",
+        "Great Fairy Wars",
+        "Lily White",
+        "Overdrive",
+        "Rekindle Blazing Hell",
+        "Saigyou Ayakashi Blooming",
+        "Scarlet Weather Rhapsody",
+        "Spring Snow",
+        "Undefined Fantastic Object",
+        "Voyage to Makai",
+        "Worldly Desires"
+    };
     
 	// Generates all the cards
 	void Start () {
-        
-        for (int i = 0; i < 50; i++)
+
+        Sprite[] incidents = Resources.LoadAll<Sprite>("CardArt/Incidents");
+
+        //Setup the incident deck
+        for (int i = 0; i < NUM_INCIDENTS; i++)
         {
-            GameObject.FindObjectOfType<CardCreator>().createRoleCard();
+            CardCreator.createIncidentCard(incident_names[i], incidents[i], i);
         }
 
         StartCoroutine(LateStart());
@@ -21,59 +49,13 @@ public class SetupCards : MonoBehaviour {
     {
         yield return new WaitForSeconds(0.01f);
 
-        for (int i = 1; i <= 50; i++)
+        //Setup the incident deck
+        for (int i = 1; i <= NUM_INCIDENTS; i++)
         {
-            Card newCard = GameObject.Find("RoleCard" + i).GetComponent<Card>();
+            Card newCard = GameObject.Find("IncidentCard" + i).GetComponent<Card>();
             newCard.moveZone(Zone.IncidentDeck);
         }
-
-        yield return new WaitForSeconds(3.0f);
-
-        for (int i=1; i <= 50; i++)
-        {
-            Card newCard = GameObject.Find("RoleCard" + i).GetComponent<Card>();
-            newCard.moveZone(Zone.BoardBottom, 4);
-        }
-
-        yield return new WaitForSeconds(3.0f);
-
-        for (int i=1; i <= 30; i++)
-        {
-            Card newCard = GameObject.Find("RoleCard" + i).GetComponent<Card>();
-            newCard.moveZone(Zone.MainDeck);
-        }
-
-        yield return new WaitForSeconds(3.0f);
-
-        for (int i=31; i<=45; i++)
-        {
-            Card newCard = GameObject.Find("RoleCard" + i).GetComponent<Card>();
-            newCard.moveZone(Zone.BoardTop, 7);
-        }
-
-        yield return new WaitForSeconds(3.0f);
-
-        for (int i = 1; i <= 20; i++)
-        {
-            Card newCard = GameObject.Find("RoleCard" + i).GetComponent<Card>();
-            newCard.moveZone(Zone.IncidentCollectDeck, 4);
-        }
-
-        yield return new WaitForSeconds(3.0f);
-
-        for (int i = 31; i <= 35; i++)
-        {
-            Card newCard = GameObject.Find("RoleCard" + i).GetComponent<Card>();
-            newCard.moveZone(Zone.MainDeck);
-        }
-
-        yield return new WaitForSeconds(3.0f);
-
-        for (int i = 21; i <= 22; i++)
-        {
-            Card newCard = GameObject.Find("RoleCard" + i).GetComponent<Card>();
-            newCard.moveZone(Zone.DiscardDeck, 4);
-        }
+        
     }
 
     void Update () {

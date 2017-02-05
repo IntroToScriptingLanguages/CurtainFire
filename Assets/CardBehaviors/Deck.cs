@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Deck : MonoBehaviour {
 
-    LinkedList<Card> deck;
+    List<Card> deck;
+    private static System.Random rng = new System.Random();
 
-	// Use this for initialization
-	void Start () {
-        deck = new LinkedList<Card>();
+    // Use this for initialization
+    void Start () {
+        deck = new List<Card>();
 	}
 
     public int count()
@@ -22,7 +23,7 @@ public class Deck : MonoBehaviour {
 
         if (deck.Count > 0)
         {
-            deck.Last.Value.enableInput = false;
+            deck[count() - 1].enableInput = false;
         }
 
         if (trans != null)
@@ -30,26 +31,27 @@ public class Deck : MonoBehaviour {
             int deck_size = deck.Count;
             
             c.move(new Vector3(trans.position.x, trans.position.y + 0.03f + (0.03f * deck_size), trans.position.z), 25);
-            deck.AddLast(c);
+            deck.Add(c);
         }
 
     }
 
     public Card peek()
     {
-        return deck.Last.Value;
+        return deck[count() - 1];
     }
 
     //Removes the top value
     public Card remove()
     {
-        Card c = deck.Last.Value;
-        deck.RemoveLast();
+        Card c = deck[count() - 1];
+        deck.RemoveAt(count() - 1);
 
         if (deck.Count > 0)
         {
-            deck.Last.Value.enabled = true;
+            deck[count() - 1].enableInput = true;
         }
+
 
         return c;
     }
@@ -61,18 +63,18 @@ public class Deck : MonoBehaviour {
         bool found = false;
         Card found_card = null;
 
+        //Last element in the deck
+        if (count() > 0 && card.cardID == deck[count() - 1].cardID)
+        {
+            return remove();
+        }
+
         foreach (Card c in deck)
         {
             if (!found)
             {
                 if (c.cardID == card.cardID)
                 {
-                    //Last element in the deck
-                    if (c.cardID == deck.Last.Value.cardID)
-                    {
-                        return remove();
-                    }
-
                     //A middle element
                     found_card = c;
                     c.enableInput = true;
@@ -100,7 +102,35 @@ public class Deck : MonoBehaviour {
         return found_card;
     }
 
+    //Shuffles the deck
+    public void Shuffle()
+    {
+        //Performs the shuffling based on Fisher-Yates
+        int n = deck.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = rng.Next(n + 1);
+            Card value = deck[k];
+            deck[k] = deck[n];
+            deck[n] = value;
+        }
+        
+        //Reorders the cards based on the deck
+        int index = 0;
 
+        foreach (Card c in deck)
+        {
+            Transform trans = this.gameObject.GetComponent<Transform>();
+
+            if (trans != null)
+            {
+                c.move(new Vector3(trans.position.x, trans.position.y + 0.03f + (0.03f * (index)), trans.position.z), 40);
+                index++;
+            }
+        }
+    }
+    
     // Update is called once per frame
     void Update () {
 		

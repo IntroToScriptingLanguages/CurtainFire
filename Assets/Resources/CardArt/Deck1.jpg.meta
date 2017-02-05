@@ -1,13 +1,83 @@
 fileFormatVersion: 2
 guid: e25ce23aab1c70248b6ae12c1d00d9ec
-timeCreated: 1486246837
+timeCreated: 1486267472
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Deck1_0
+    21300002: Deck1_1
+    21300004: Deck1_2
+    21300006: Deck1_3
+    21300008: Deck1_4
+    21300010: Deck1_5
+    21300012: Deck1_6
+    21300014: Deck1_7
+    21300016: Deck1_8
+    21300018: Deck1_9
+    21300020: Deck1_10
+    21300022: Deck1_11
+    21300024: Deck1_12
+    21300026: Deck1_13
+    21300028: Deck1_14
+    21300030: Deck1_15
+    21300032: Deck1_16
+    21300034: Deck1_17
+    21300036: Deck1_18
+    21300038: Deck1_19
+    21300040: Deck1_20
+    21300042: Deck1_21
+    21300044: Deck1_22
+    21300046: Deck1_23
+    21300048: Deck1_24
+    21300050: Deck1_25
+    21300052: Deck1_26
+    21300054: Deck1_27
+    21300056: Deck1_28
+    21300058: Deck1_29
+    21300060: Deck1_30
+    21300062: Deck1_31
+    21300064: Deck1_32
+    21300066: Deck1_33
+    21300068: Deck1_34
+    21300070: Deck1_35
+    21300072: Deck1_36
+    21300074: Deck1_37
+    21300076: Deck1_38
+    21300078: Deck1_39
+    21300080: Deck1_40
+    21300082: Deck1_41
+    21300084: Deck1_42
+    21300086: Deck1_43
+    21300088: Deck1_44
+    21300090: Deck1_45
+    21300092: Deck1_46
+    21300094: Deck1_47
+    21300096: Deck1_48
+    21300098: Deck1_49
+    21300100: Deck1_50
+    21300102: Deck1_51
+    21300104: Deck1_52
+    21300106: Deck1_53
+    21300108: Deck1_54
+    21300110: Deck1_55
+    21300112: Deck1_56
+    21300114: Deck1_57
+    21300116: Deck1_58
+    21300118: Deck1_59
+    21300120: Deck1_60
+    21300122: Deck1_61
+    21300124: Deck1_62
+    21300126: Deck1_63
+    21300128: Deck1_64
+    21300130: Deck1_65
+    21300132: Deck1_66
+    21300134: Deck1_67
+    21300136: Deck1_68
+    21300138: Deck1_69
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -19,7 +89,7 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-  isReadable: 0
+  isReadable: 1
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -30,11 +100,11 @@ TextureImporter:
     filterMode: -1
     aniso: -1
     mipBias: -1
-    wrapMode: -1
-  nPOTScale: 1
+    wrapMode: 1
+  nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -42,9 +112,9 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 8
   textureShape: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
@@ -58,9 +128,951 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: tvOS
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Deck1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3150
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_1
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 3150
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_2
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 3150
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_3
+      rect:
+        serializedVersion: 2
+        x: 1125
+        y: 3150
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_4
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 3150
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_5
+      rect:
+        serializedVersion: 2
+        x: 1875
+        y: 3150
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_6
+      rect:
+        serializedVersion: 2
+        x: 2250
+        y: 3150
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_7
+      rect:
+        serializedVersion: 2
+        x: 2625
+        y: 3150
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_8
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 3150
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_9
+      rect:
+        serializedVersion: 2
+        x: 3375
+        y: 3150
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2625
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_11
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 2625
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_12
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 2625
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_13
+      rect:
+        serializedVersion: 2
+        x: 1125
+        y: 2625
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_14
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 2625
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_15
+      rect:
+        serializedVersion: 2
+        x: 1875
+        y: 2625
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_16
+      rect:
+        serializedVersion: 2
+        x: 2250
+        y: 2625
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_17
+      rect:
+        serializedVersion: 2
+        x: 2625
+        y: 2625
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_18
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 2625
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_19
+      rect:
+        serializedVersion: 2
+        x: 3375
+        y: 2625
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2100
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_21
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 2100
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_22
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 2100
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_23
+      rect:
+        serializedVersion: 2
+        x: 1125
+        y: 2100
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_24
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 2100
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_25
+      rect:
+        serializedVersion: 2
+        x: 1875
+        y: 2100
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_26
+      rect:
+        serializedVersion: 2
+        x: 2250
+        y: 2100
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_27
+      rect:
+        serializedVersion: 2
+        x: 2625
+        y: 2100
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_28
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 2100
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_29
+      rect:
+        serializedVersion: 2
+        x: 3375
+        y: 2100
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1575
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_31
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 1575
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_32
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 1575
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_33
+      rect:
+        serializedVersion: 2
+        x: 1125
+        y: 1575
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_34
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 1575
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_35
+      rect:
+        serializedVersion: 2
+        x: 1875
+        y: 1575
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_36
+      rect:
+        serializedVersion: 2
+        x: 2250
+        y: 1575
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_37
+      rect:
+        serializedVersion: 2
+        x: 2625
+        y: 1575
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_38
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 1575
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_39
+      rect:
+        serializedVersion: 2
+        x: 3375
+        y: 1575
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1050
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_41
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 1050
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_42
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 1050
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_43
+      rect:
+        serializedVersion: 2
+        x: 1125
+        y: 1050
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_44
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 1050
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_45
+      rect:
+        serializedVersion: 2
+        x: 1875
+        y: 1050
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_46
+      rect:
+        serializedVersion: 2
+        x: 2250
+        y: 1050
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_47
+      rect:
+        serializedVersion: 2
+        x: 2625
+        y: 1050
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_48
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 1050
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_49
+      rect:
+        serializedVersion: 2
+        x: 3375
+        y: 1050
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_50
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 525
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_51
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 525
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_52
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 525
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_53
+      rect:
+        serializedVersion: 2
+        x: 1125
+        y: 525
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_54
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 525
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_55
+      rect:
+        serializedVersion: 2
+        x: 1875
+        y: 525
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_56
+      rect:
+        serializedVersion: 2
+        x: 2250
+        y: 525
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_57
+      rect:
+        serializedVersion: 2
+        x: 2625
+        y: 525
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_58
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 525
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_59
+      rect:
+        serializedVersion: 2
+        x: 3375
+        y: 525
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_60
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_61
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 0
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_62
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 0
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_63
+      rect:
+        serializedVersion: 2
+        x: 1125
+        y: 0
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_64
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 0
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_65
+      rect:
+        serializedVersion: 2
+        x: 1875
+        y: 0
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_66
+      rect:
+        serializedVersion: 2
+        x: 2250
+        y: 0
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_67
+      rect:
+        serializedVersion: 2
+        x: 2625
+        y: 0
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_68
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 0
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Deck1_69
+      rect:
+        serializedVersion: 2
+        x: 3375
+        y: 0
+        width: 375
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 

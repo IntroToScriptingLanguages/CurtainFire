@@ -21,7 +21,7 @@ public class IncidentCard : Card {
         {
             //Flip back
             CardCreator creator = GameObject.Find("Manager").GetComponent<CardCreator>();
-            creator.setArt(this.gameObject, "CardBacks/IncidentsB");
+            CardCreator.setArt(this.gameObject, "CardBacks/IncidentsB");
             flipped = true;
         }
         else

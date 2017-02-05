@@ -22,7 +22,7 @@ public class CharaCard : Card {
         {
             //Flip back
             CardCreator creator = GameObject.Find("Manager").GetComponent<CardCreator>();
-            creator.setArt(this.gameObject, "CardBacks/CharactersB");
+            CardCreator.setArt(this.gameObject, "CardBacks/CharactersB");
             flipped = true;
         }
         else

@@ -21,7 +21,7 @@ public class MainCard : Card {
         {
             //Flip back
             CardCreator creator = GameObject.Find("Manager").GetComponent<CardCreator>();
-            creator.setArt(this.gameObject, "CardBacks/DeckB");
+            CardCreator.setArt(this.gameObject, "CardBacks/DeckB");
             flipped = true;
         }
         else
