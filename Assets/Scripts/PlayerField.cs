@@ -148,8 +148,7 @@ public class PlayerField : MonoBehaviour {
                 //Will try to fit a four_card formation, if that doesn't work, the card list will be shrunk to allow a sixth card to fit.
                 if (count > 4)
                 {
-                    Debug.Log("Reformating");
-
+                    //Over four cards remaining
                     count--;
 
                     //Calculate the amount of space between each card
@@ -218,39 +217,45 @@ public class PlayerField : MonoBehaviour {
                 }
                 else
                 {
+                    //Four cards remaining
+
                     //Fixes formatting
                     int push_index = card_list.IndexOf(card);
-                    
-                    //Removes card from list
-                    card_list.Remove(card);
 
-                    for (int i = push_index; i < card_list.Count; i++)
+                    if (push_index != -1)
                     {
-                        Card c = card_list[i];
+                        //Removes card from list
+                        card_list.Remove(card);
 
-                        float cardOffset = (-3.0f) + (i * 2.0f);
+                        for (int i = push_index; i < card_list.Count; i++)
+                        {
 
-                        //Players 1/2: negative hor, negative vert
-                        if (playerNum == 1 || playerNum == 2)
-                        {
-                            c.move(new Vector3(source.x - cardOffset, source.y + upOff, source.z - vertOff), 40);
-                        }
-                        //Players 3/4: positive vert, negative hor
-                        else if (playerNum == 3 || playerNum == 4)
-                        {
-                            c.move(new Vector3(source.x + vertOff, source.y + upOff, source.z - cardOffset), 40);
-                        }
+                            Card c = card_list[i];
 
-                        //Player 5/6: positive hor, positive vert 
-                        else if (playerNum == 5 || playerNum == 6)
-                        {
-                            c.move(new Vector3(source.x + cardOffset, source.y + upOff, source.z + vertOff), 40);
-                        }
+                            float cardOffset = (-3.0f) + (i * 2.0f);
 
-                        //Player 7/8: negative vert, positive hor
-                        else if (playerNum == 7 || playerNum == 8)
-                        {
-                            c.move(new Vector3(source.x - vertOff, source.y + upOff, source.z + cardOffset), 40);
+                            //Players 1/2: negative hor, negative vert
+                            if (playerNum == 1 || playerNum == 2)
+                            {
+                                c.move(new Vector3(source.x - cardOffset, source.y + upOff, source.z - vertOff), 40);
+                            }
+                            //Players 3/4: positive vert, negative hor
+                            else if (playerNum == 3 || playerNum == 4)
+                            {
+                                c.move(new Vector3(source.x + vertOff, source.y + upOff, source.z - cardOffset), 40);
+                            }
+
+                            //Player 5/6: positive hor, positive vert 
+                            else if (playerNum == 5 || playerNum == 6)
+                            {
+                                c.move(new Vector3(source.x + cardOffset, source.y + upOff, source.z + vertOff), 40);
+                            }
+
+                            //Player 7/8: negative vert, positive hor
+                            else if (playerNum == 7 || playerNum == 8)
+                            {
+                                c.move(new Vector3(source.x - vertOff, source.y + upOff, source.z + cardOffset), 40);
+                            }
                         }
                     }
                 }
@@ -279,6 +284,8 @@ public class PlayerField : MonoBehaviour {
                 foreach (Card c in card_list)
                 {
                     Transform t = c.gameObject.GetComponent<Transform>();
+
+                    
 
                     upOff = (card_count * 0.01f);
 
@@ -327,28 +334,27 @@ public class PlayerField : MonoBehaviour {
             if (playerNum == 1 || playerNum == 2)
             {
                 target = new Vector3(target.x - horOff, target.y + upOff, target.z - vertOff);
-                Debug.Log(playerNum);
-                card.changeFacing(Facing.Down);
+                card.rotateCard(Facing.Down);
             }
             //Players 3/4: positive vert, negative hor
             else if (playerNum == 3 || playerNum == 4)
             {
                 target = new Vector3(target.x + vertOff, target.y + upOff, target.z - horOff);
-                card.changeFacing(Facing.Right);
+                card.rotateCard(Facing.Right);
             }
 
             //Player 5/6: positive hor, positive vert 
             else if (playerNum == 5 || playerNum == 6)
             {
                 target = new Vector3(target.x + horOff, target.y + upOff, target.z + vertOff);
-                card.changeFacing(Facing.Up);
+                card.rotateCard(Facing.Up);
             }
 
             //Player 7/8: negative vert, positive hor
             else if (playerNum == 7 || playerNum == 8)
             {
                 target = new Vector3(target.x - vertOff, target.y + upOff, target.z + horOff);
-                card.changeFacing(Facing.Left);
+                card.rotateCard(Facing.Left);
             }
 
             //Add the new card to the card_list
@@ -358,6 +364,322 @@ public class PlayerField : MonoBehaviour {
 
             card.owner = playerNum;
         }
+    }
+
+    //Removes the first card from the board
+    public static Card removeFirst(int playerNum, bool top_row)
+    {
+        Card card;
+
+        if (top_row)
+        {
+            if (field_cards_top[playerNum - 1].Count == 0)
+            {
+                return null;
+            }
+
+            card = field_cards_top[playerNum - 1][0];
+        }
+        else
+        {
+            if (field_cards_bottom[playerNum - 1].Count == 0)
+            {
+                return null;
+            }
+
+            card = field_cards_bottom[playerNum - 1][0];
+        }
+
+        return removeFromBoard(card, playerNum);
+    }
+
+    //Removes the last card from the board
+    public static Card removeLast(int playerNum, bool top_row)
+    {
+        Card card;
+
+        if (top_row)
+        {
+            if (field_cards_top[playerNum-1].Count == 0)
+            {
+                return null;
+            }
+
+            card = field_cards_top[playerNum - 1][field_cards_bottom[playerNum - 1].Count - 1];
+        }
+        else
+        {
+            if (field_cards_bottom[playerNum - 1].Count == 0)
+            {
+                return null;
+            }
+
+            card = field_cards_bottom[playerNum - 1][field_cards_bottom[playerNum - 1].Count - 1];
+        }
+
+        return removeFromBoard(card, playerNum);
+    }
+
+    //Removes a card from a board, if it can't be found, return null
+    public static Card removeFromBoard(Card c, int playerNum)
+    {
+        if (playerNum >= 1 && playerNum <= 8)
+        {
+            List<Card> top_cards = field_cards_top[playerNum - 1];
+            List<Card> bottom_cards = field_cards_bottom[playerNum - 1];
+
+            float upOff = 0;
+
+            foreach (Card current in top_cards)
+            {
+                if (current.cardID == c.cardID)
+                {
+                        List<Card> card_list = top_cards;
+
+                        int count = card_list.Count;
+                        float vertOff = 0;
+
+                        Vector3 source = PlayerField.getPosition(current.owner, true);
+
+                        //Will try to fit a four_card formation, if that doesn't work, the card list will be shrunk to allow a sixth card to fit.
+                        if (count > 4)
+                        {
+
+                            count--;
+
+                            //Calculate the amount of space between each card
+                            float dist_between;
+
+                            if (count == 4)
+                            {
+                                dist_between = 2.0f;
+                            }
+                            else
+                            {
+                                dist_between = 6.0f / (float)(count - 1);
+                            }
+
+                            int card_count = 0;
+
+                            //Removes card from list
+                            card_list.Remove(current);
+
+                            //Fixes formatting
+                            foreach (Card c_card in card_list)
+                            {
+                                Transform t = c_card.gameObject.GetComponent<Transform>();
+
+                                if (count <= 4)
+                                {
+                                    upOff = 0;
+                                }
+                                else
+                                {
+                                    upOff = (card_count * 0.01f);
+                                }
+
+                                if (t != null)
+                                {
+                                    //Calculate offset from center of board
+                                    float cardOffset = (-3.0f) + (card_count * dist_between);
+
+                                    //Players 1/2: negative hor, negative vert
+                                    if (playerNum == 1 || playerNum == 2)
+                                    {
+                                        c_card.move(new Vector3(source.x - cardOffset, source.y + upOff, source.z - vertOff), 40);
+                                    }
+                                    //Players 3/4: positive vert, negative hor
+                                    else if (playerNum == 3 || playerNum == 4)
+                                    {
+                                        c_card.move(new Vector3(source.x + vertOff, source.y + upOff, source.z - cardOffset), 40);
+                                    }
+
+                                    //Player 5/6: positive hor, positive vert 
+                                    else if (playerNum == 5 || playerNum == 6)
+                                    {
+                                        c_card.move(new Vector3(source.x + cardOffset, source.y + upOff, source.z + vertOff), 40);
+                                    }
+
+                                    //Player 7/8: negative vert, positive hor
+                                    else if (playerNum == 7 || playerNum == 8)
+                                    {
+                                        c_card.move(new Vector3(source.x - vertOff, source.y + upOff, source.z + cardOffset), 40);
+                                    }
+
+                                    card_count++;
+                                }
+                            }
+
+                        }
+                        else
+                        {
+                            //Fixes formatting
+                            int push_index = card_list.IndexOf(current);
+
+                            //Removes card from list
+                            card_list.Remove(current);
+
+                            for (int i = push_index; i < card_list.Count; i++)
+                            {
+                                Card card = card_list[i];
+
+                                float cardOffset = (-3.0f) + (i * 2.0f);
+
+                                //Players 1/2: negative hor, negative vert
+                                if (playerNum == 1 || playerNum == 2)
+                                {
+                                    card.move(new Vector3(source.x - cardOffset, source.y + upOff, source.z - vertOff), 40);
+                                }
+                                //Players 3/4: positive vert, negative hor
+                                else if (playerNum == 3 || playerNum == 4)
+                                {
+                                    card.move(new Vector3(source.x + vertOff, source.y + upOff, source.z - cardOffset), 40);
+                                }
+
+                                //Player 5/6: positive hor, positive vert 
+                                else if (playerNum == 5 || playerNum == 6)
+                                {
+                                    card.move(new Vector3(source.x + cardOffset, source.y + upOff, source.z + vertOff), 40);
+                                }
+
+                                //Player 7/8: negative vert, positive hor
+                                else if (playerNum == 7 || playerNum == 8)
+                                {
+                                    card.move(new Vector3(source.x - vertOff, source.y + upOff, source.z + cardOffset), 40);
+                                }
+                            }
+                        }
+
+                        return current;
+                    }
+            }
+
+            foreach (Card current in bottom_cards)
+            {
+                if (current.cardID == c.cardID)
+                {
+                    List<Card> card_list = bottom_cards;
+
+                    int count = card_list.Count;
+                    float vertOff = 3;
+
+                    Vector3 source = PlayerField.getPosition(current.owner, false);
+
+                    //Will try to fit a four_card formation, if that doesn't work, the card list will be shrunk to allow a sixth card to fit.
+                    if (count > 4)
+                    {
+
+                        count--;
+
+                        //Calculate the amount of space between each card
+                        float dist_between;
+
+                        if (count == 4)
+                        {
+                            dist_between = 2.0f;
+                        }
+                        else
+                        {
+                            dist_between = 6.0f / (float)(count - 1);
+                        }
+
+                        int card_count = 0;
+
+                        //Removes card from list
+                        card_list.Remove(current);
+
+                        //Fixes formatting
+                        foreach (Card c_card in card_list)
+                        {
+                            Transform t = c_card.gameObject.GetComponent<Transform>();
+
+                            if (count <= 4)
+                            {
+                                upOff = 0;
+                            }
+                            else
+                            {
+                                upOff = (card_count * 0.01f);
+                            }
+
+                            if (t != null)
+                            {
+                                //Calculate offset from center of board
+                                float cardOffset = (-3.0f) + (card_count * dist_between);
+
+                                //Players 1/2: negative hor, negative vert
+                                if (playerNum == 1 || playerNum == 2)
+                                {
+                                    c_card.move(new Vector3(source.x - cardOffset, source.y + upOff, source.z - vertOff), 40);
+                                }
+                                //Players 3/4: positive vert, negative hor
+                                else if (playerNum == 3 || playerNum == 4)
+                                {
+                                    c_card.move(new Vector3(source.x + vertOff, source.y + upOff, source.z - cardOffset), 40);
+                                }
+
+                                //Player 5/6: positive hor, positive vert 
+                                else if (playerNum == 5 || playerNum == 6)
+                                {
+                                    c_card.move(new Vector3(source.x + cardOffset, source.y + upOff, source.z + vertOff), 40);
+                                }
+
+                                //Player 7/8: negative vert, positive hor
+                                else if (playerNum == 7 || playerNum == 8)
+                                {
+                                    c_card.move(new Vector3(source.x - vertOff, source.y + upOff, source.z + cardOffset), 40);
+                                }
+
+                                card_count++;
+                            }
+                        }
+
+                    }
+                    else
+                    {
+                        //Fixes formatting
+                        int push_index = card_list.IndexOf(current);
+
+                        //Removes card from list
+                        card_list.Remove(current);
+
+                        for (int i = push_index; i < card_list.Count; i++)
+                        {
+                            Card card = card_list[i];
+
+                            float cardOffset = (-3.0f) + (i * 2.0f);
+
+                            //Players 1/2: negative hor, negative vert
+                            if (playerNum == 1 || playerNum == 2)
+                            {
+                                card.move(new Vector3(source.x - cardOffset, source.y + upOff, source.z - vertOff), 40);
+                            }
+                            //Players 3/4: positive vert, negative hor
+                            else if (playerNum == 3 || playerNum == 4)
+                            {
+                                card.move(new Vector3(source.x + vertOff, source.y + upOff, source.z - cardOffset), 40);
+                            }
+
+                            //Player 5/6: positive hor, positive vert 
+                            else if (playerNum == 5 || playerNum == 6)
+                            {
+                                card.move(new Vector3(source.x + cardOffset, source.y + upOff, source.z + vertOff), 40);
+                            }
+
+                            //Player 7/8: negative vert, positive hor
+                            else if (playerNum == 7 || playerNum == 8)
+                            {
+                                card.move(new Vector3(source.x - vertOff, source.y + upOff, source.z + cardOffset), 40);
+                            }
+                        }
+                    }
+
+                    return current;
+                }
+            }
+        }
+
+        return null;
     }
 
     //Teleports a GameObject with a Transform on a field

@@ -21,12 +21,58 @@ public class SetupCards : MonoBehaviour {
     {
         yield return new WaitForSeconds(0.01f);
 
-        Deck mdeck = GameObject.Find("IncidentDeck").GetComponent<Deck>();
-
         for (int i = 1; i <= 50; i++)
         {
-            GameObject newCard = GameObject.Find("RoleCard" + i);
-            mdeck.add(newCard.GetComponent<Card>());
+            Card newCard = GameObject.Find("RoleCard" + i).GetComponent<Card>();
+            newCard.moveZone(Zone.IncidentDeck);
+        }
+
+        yield return new WaitForSeconds(3.0f);
+
+        for (int i=1; i <= 50; i++)
+        {
+            Card newCard = GameObject.Find("RoleCard" + i).GetComponent<Card>();
+            newCard.moveZone(Zone.BoardBottom, 4);
+        }
+
+        yield return new WaitForSeconds(3.0f);
+
+        for (int i=1; i <= 30; i++)
+        {
+            Card newCard = GameObject.Find("RoleCard" + i).GetComponent<Card>();
+            newCard.moveZone(Zone.MainDeck);
+        }
+
+        yield return new WaitForSeconds(3.0f);
+
+        for (int i=31; i<=45; i++)
+        {
+            Card newCard = GameObject.Find("RoleCard" + i).GetComponent<Card>();
+            newCard.moveZone(Zone.BoardTop, 7);
+        }
+
+        yield return new WaitForSeconds(3.0f);
+
+        for (int i = 1; i <= 20; i++)
+        {
+            Card newCard = GameObject.Find("RoleCard" + i).GetComponent<Card>();
+            newCard.moveZone(Zone.IncidentCollectDeck, 4);
+        }
+
+        yield return new WaitForSeconds(3.0f);
+
+        for (int i = 31; i <= 35; i++)
+        {
+            Card newCard = GameObject.Find("RoleCard" + i).GetComponent<Card>();
+            newCard.moveZone(Zone.MainDeck);
+        }
+
+        yield return new WaitForSeconds(3.0f);
+
+        for (int i = 21; i <= 22; i++)
+        {
+            Card newCard = GameObject.Find("RoleCard" + i).GetComponent<Card>();
+            newCard.moveZone(Zone.DiscardDeck, 4);
         }
     }
 

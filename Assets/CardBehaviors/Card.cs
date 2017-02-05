@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Direction a card is facing
 public enum Facing { Up, Right, Down, Left };
+
+//Zones of the game board
+public enum Zone { None, BoardTop, BoardBottom, Hand, MainDeck, DiscardDeck, IncidentDeck, IncidentDiscardDeck, IncidentCollectDeck }
 
 public abstract class Card : MonoBehaviour {
 
@@ -12,6 +16,8 @@ public abstract class Card : MonoBehaviour {
     Facing facing; //Changes card direction
     protected bool flipped; //If true, back is facing top
     public bool enableInput;
+    Zone loc; //NOTE: Only used with Card.moveZone
+
 
     //Player owner, 0 is no one
     public int owner;
@@ -30,6 +36,8 @@ public abstract class Card : MonoBehaviour {
 
         cardID = cur_id;
         cur_id++;
+
+        loc = Zone.None;
     }
 
     IEnumerator ZoomIn()
@@ -55,7 +63,7 @@ public abstract class Card : MonoBehaviour {
     }
 
     //Changes the facing of the card
-    public void changeFacing(Facing target)
+    public void rotateCard(Facing target)
     {
         if (facing.Equals(target))
         {
@@ -107,6 +115,98 @@ public abstract class Card : MonoBehaviour {
         //For testing LZ LZ LZ
         this.flip();
         //End testing
+    }
+
+    //The ultimate move function, moves anywhere you want
+    //Use this over any other move function, as it's the only one that updates MoveTarget
+    public void moveZone(Zone target, int new_owner = 1)
+    {
+        Zone card_loc = loc;
+
+        //Removes card from original location
+        switch (card_loc)
+        {
+            case Zone.Hand:
+                //TODO
+                break;
+            case Zone.BoardBottom:
+                PlayerField.removeFromBoard(this, owner);
+                break;
+            case Zone.BoardTop:
+                PlayerField.removeFromBoard(this, owner);
+                break;
+            case Zone.MainDeck:
+                Deck mdeck = GameObject.Find("MainDeck").GetComponent<Deck>();
+                mdeck.remove(this);
+                break;
+            case Zone.DiscardDeck:
+                Deck ddeck = GameObject.Find("DiscardDeck").GetComponent<Deck>();
+                ddeck.remove(this);
+                break;
+            case Zone.IncidentDeck:
+                Deck ideck = GameObject.Find("IncidentDeck").GetComponent<Deck>();
+                ideck.remove(this);
+                break;
+            case Zone.IncidentDiscardDeck:
+                Deck icdeck = GameObject.Find("IncidentCollectDeck").GetComponent<Deck>();
+                icdeck.remove(this);
+                break;
+            case Zone.IncidentCollectDeck:
+                Deck iddeck = GameObject.Find("IncidentDiscardDeck").GetComponent<Deck>();
+                iddeck.remove(this);
+                break;
+            default:
+                break;
+        }
+
+        rotateCard(Facing.Up);
+
+        //Moves card to new location, also handles movement animation
+        switch (target)
+        {
+            case Zone.Hand:
+                //TODO
+                owner = new_owner;
+                break;
+            case Zone.BoardBottom:
+                PlayerField.move(this, new_owner, false);
+                owner = new_owner;
+                break;
+            case Zone.BoardTop:
+                PlayerField.move(this, new_owner, true);
+                owner = new_owner;
+                break;
+            case Zone.MainDeck:
+                Deck mdeck = GameObject.Find("MainDeck").GetComponent<Deck>();
+                mdeck.add(this);
+                owner = 0;
+                break;
+            case Zone.DiscardDeck:
+                Deck ddeck = GameObject.Find("DiscardDeck").GetComponent<Deck>();
+                ddeck.add(this);
+                owner = 0;
+                break;
+            case Zone.IncidentDeck:
+                Deck ideck = GameObject.Find("IncidentDeck").GetComponent<Deck>();
+                ideck.add(this);
+                owner = 0;
+                break;
+            case Zone.IncidentDiscardDeck:
+                Deck icdeck = GameObject.Find("IncidentCollectDeck").GetComponent<Deck>();
+                icdeck.add(this);
+                owner = 0;
+                break;
+            case Zone.IncidentCollectDeck:
+                Deck iddeck = GameObject.Find("IncidentDiscardDeck").GetComponent<Deck>();
+                iddeck.add(this);
+                owner = 0;
+                break;
+            default:
+                owner = 0;
+                break;
+        }
+
+        loc = target;
     }
 
     //Orders a card to move to a designated location
