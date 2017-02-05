@@ -138,7 +138,7 @@ public class PlayerField : MonoBehaviour {
             int card_count;
 
             //REFORMAT THE OLD BOARD:
-            if (card.owner >= 1 && card.owner <= 8)
+            /*if (card.owner >= 1 && card.owner <= 8)
             {
                 card_list = all_card_list[card.owner - 1];
                 count = card_list.Count;
@@ -261,6 +261,7 @@ public class PlayerField : MonoBehaviour {
                 }
 
             }
+            */
 
             //FORMAT THE NEW BOARD:
             card_list = all_card_list[playerNum - 1];
@@ -464,8 +465,10 @@ public class PlayerField : MonoBehaviour {
                             //Removes card from list
                             card_list.Remove(current);
 
-                            //Fixes formatting
-                            foreach (Card c_card in card_list)
+                            
+
+                        //Fixes formatting
+                        foreach (Card c_card in card_list)
                             {
                                 Transform t = c_card.gameObject.GetComponent<Transform>();
 
@@ -482,6 +485,8 @@ public class PlayerField : MonoBehaviour {
                                 {
                                     //Calculate offset from center of board
                                     float cardOffset = (-3.0f) + (card_count * dist_between);
+
+                                    playerNum = c_card.owner;
 
                                     //Players 1/2: negative hor, negative vert
                                     if (playerNum == 1 || playerNum == 2)

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Direction a card is facing
-public enum Facing { Up, Right, Down, Left };
+public enum Facing { Up, Left, Down, Right };
 
 //Zones of the game board
 public enum Zone { None, BoardTop, BoardBottom, Hand, MainDeck, DiscardDeck, IncidentDeck, IncidentDiscardDeck, IncidentCollectDeck }
@@ -21,7 +21,7 @@ public abstract class Card : MonoBehaviour {
     Zone loc; //NOTE: Only used with Card.moveZone
     public int spriteIndex; //Stores index of sprite in the sprite array
 
-    System.Random random = new System.Random();
+    static System.Random random = new System.Random();
 
     //Player owner, 0 is no one
     public int owner;
@@ -87,7 +87,7 @@ public abstract class Card : MonoBehaviour {
 
             facing = target;
 
-            card_t.Rotate(new Vector3(0, 1, 0), 90 * diff);
+            card_t.Rotate(new Vector3(0, 0, 1), 90 * diff);
         }
     }
 
@@ -116,10 +116,17 @@ public abstract class Card : MonoBehaviour {
     }
 
     //Called when you left-click a card when not Zoomed
-    void Select()
+    protected void Select()
     {
         //For testing LZ LZ LZ
-        this.moveZone(Zone.BoardBottom, random.Next(1, 8));
+        if (this is IncidentCard)
+        {
+            this.moveZone(Zone.BoardBottom, Card.random.Next(1, 9));
+        }
+        else
+        {
+            this.moveZone(Zone.BoardTop, Card.random.Next(1, 9));
+        }
         //End testing
     }
 
@@ -256,9 +263,6 @@ public abstract class Card : MonoBehaviour {
     {
         if (enableInput)
         {
-            var renderer = this.GetComponent<MeshRenderer>();
-
-            renderer.material.SetColor("_TintColor", Color.yellow);
         }
     }
 
@@ -266,9 +270,6 @@ public abstract class Card : MonoBehaviour {
     {
         if (enableInput)
         {
-            var renderer = this.GetComponent<MeshRenderer>();
-
-            renderer.material.SetColor("_TintColor", Color.white);
         }
     }
 
