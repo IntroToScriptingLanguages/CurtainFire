@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+    Helper class that generates card sprite objects from images.
+*/
 public class CardCreator : MonoBehaviour {
 
     public static int mCard = 1;
@@ -79,16 +82,15 @@ public class CardCreator : MonoBehaviour {
 
         if (card_r != null)
         {
-
-            Texture2D cardArt = Resources.Load(art) as Texture2D;
+            card_r.sprite = Resources.Load<Sprite>(art);
+            /*Texture2D cardArt = Resources.Load(art) as Texture2D;
             if (cardArt == null)
             {
                 card_r.material = defaultMaterial;
                 return false;
-            }
+            }*/
 
             Material material = new Material(Shader.Find("Standard"));
-            material.mainTexture = cardArt;
 
             card_r.material = material;
             
@@ -101,7 +103,7 @@ public class CardCreator : MonoBehaviour {
     }
 
     //Creates a new main deck card
-    public static GameObject createMainCard(string name, Sprite sprite, int sprite_index)
+    public static GameObject createMainCard(string name, Sprite sprite)
     {
         GameObject newCard = new GameObject();
         newCard.name = "MainCard" + mCard;
@@ -111,7 +113,7 @@ public class CardCreator : MonoBehaviour {
         newCard.AddComponent<SpriteRenderer>();
 
         newCard.GetComponent<MainCard>().cardName = name;
-        newCard.GetComponent<MainCard>().spriteIndex = sprite_index;
+        newCard.GetComponent<MainCard>().sprite = sprite;
 
         //Set Transform
         newCard.transform.position = new Vector3(0, 2, 0);
@@ -133,7 +135,7 @@ public class CardCreator : MonoBehaviour {
     }
 
     //Creates a new incident card
-    public static GameObject createIncidentCard(string name, Sprite sprite, int sprite_index)
+    public static GameObject createIncidentCard(string name, Sprite sprite)
     {
         GameObject newCard = new GameObject();
         newCard.name = "IncidentCard" + iCard;
@@ -141,10 +143,9 @@ public class CardCreator : MonoBehaviour {
         
         newCard.AddComponent<IncidentCard>();
         newCard.AddComponent<SpriteRenderer>();
-        
 
         newCard.GetComponent<IncidentCard>().cardName = name;
-        newCard.GetComponent<IncidentCard>().spriteIndex = sprite_index;
+        newCard.GetComponent<IncidentCard>().sprite = sprite;
 
         //Set Transform
         newCard.transform.position = new Vector3(0, 2, 0);
@@ -179,7 +180,7 @@ public class CardCreator : MonoBehaviour {
     }
 
     //Creates a new character card
-    public static GameObject createCharacterCard(string name, Sprite sprite, int sprite_index)
+    public static GameObject createCharacterCard(string name, Sprite sprite)
     {
         GameObject newCard = new GameObject();
         newCard.name = "CharaCard" + cCard;
@@ -189,7 +190,7 @@ public class CardCreator : MonoBehaviour {
         newCard.AddComponent<SpriteRenderer>();
 
         newCard.GetComponent<CharaCard>().cardName = name;
-        newCard.GetComponent<CharaCard>().spriteIndex = sprite_index;
+        newCard.GetComponent<CharaCard>().sprite = sprite;
 
         //Set Transform
         newCard.transform.position = new Vector3(0, 2, 0);
@@ -211,7 +212,7 @@ public class CardCreator : MonoBehaviour {
     }
 
     //Creates a new role card
-    public static GameObject createRoleCard(string name, Sprite sprite, int sprite_index)
+    public static GameObject createRoleCard(string name, Sprite sprite)
     {
         GameObject newCard = new GameObject();
         newCard.name = "RoleCard" + roleCard;
@@ -221,7 +222,7 @@ public class CardCreator : MonoBehaviour {
         newCard.AddComponent<SpriteRenderer>();
 
         newCard.GetComponent<RoleCard>().cardName = name;
-        newCard.GetComponent<RoleCard>().spriteIndex = sprite_index;
+        newCard.GetComponent<RoleCard>().sprite = sprite;
 
         //Set Transform
         newCard.transform.position = new Vector3(0, 2, 0);

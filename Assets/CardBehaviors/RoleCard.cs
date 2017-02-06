@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+    Representation of a role card.
+*/
 public class RoleCard : Card {
 
     // Use this for initialization
@@ -27,8 +30,9 @@ public class RoleCard : Card {
         else
         {
             //Flip front
+            CardCreator creator = GameObject.Find("Manager").GetComponent<CardCreator>();
+            CardCreator.setArt(this.gameObject, this.sprite);
             flipped = false;
-            Debug.Log("flip back card ID:" + this.cardID);
         }
     }
 }

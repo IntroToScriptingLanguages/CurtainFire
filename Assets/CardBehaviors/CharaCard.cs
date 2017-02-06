@@ -3,6 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+    Representation of a character card.
+    Note that character cards are represented as square disks on peoples' UIs, NOT physical cards.
+    As UI elements, characters MUST be initialized in LateStart
+*/
 public class CharaCard : Card {
     
 
@@ -28,8 +33,9 @@ public class CharaCard : Card {
         else
         {
             //Flip front
+            CardCreator creator = GameObject.Find("Manager").GetComponent<CardCreator>();
+            CardCreator.setArt(this.gameObject, this.sprite);
             flipped = false;
-            Debug.Log("flip back");
         }
     }
 }

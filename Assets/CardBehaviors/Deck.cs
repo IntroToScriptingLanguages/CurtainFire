@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+    Representation of a deck of cards, attached to a game object on which the deck will go.
+*/
 public class Deck : MonoBehaviour {
 
     List<Card> deck;
@@ -105,6 +108,9 @@ public class Deck : MonoBehaviour {
     //Shuffles the deck
     public void Shuffle()
     {
+        //Disable the current top card
+        deck[count() - 1].enableInput = false;
+
         //Performs the shuffling based on Fisher-Yates
         int n = deck.Count;
         while (n > 1)
@@ -129,6 +135,9 @@ public class Deck : MonoBehaviour {
                 index++;
             }
         }
+
+        //Enable the top card
+        deck[count() - 1].enableInput = true;
     }
     
     // Update is called once per frame

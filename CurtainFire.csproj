@@ -91,6 +91,8 @@
     <Compile Include="Assets\CardBehaviors\MainCard.cs" />
     <Compile Include="Assets\CardBehaviors\RoleCard.cs" />
     <Compile Include="Assets\Classes\CardCreator.cs" />
+    <Compile Include="Assets\Classes\Player.cs" />
+    <Compile Include="Assets\Classes\Utilities.cs" />
     <Compile Include="Assets\Scripts\CameraBehavior.cs" />
     <Compile Include="Assets\Scripts\GlobalBehavior.cs" />
     <Compile Include="Assets\Scripts\PlayerField.cs" />

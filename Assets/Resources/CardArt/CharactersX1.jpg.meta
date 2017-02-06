@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 231941b2ab3fdda489254cf8d75bc1f4
-timeCreated: 1486267377
+timeCreated: 1486356750
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -110,11 +110,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1488
-        width: 1051
-        height: 1488
+        y: 311
+        width: 219
+        height: 311
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -122,12 +122,12 @@ TextureImporter:
       name: CharactersX1_1
       rect:
         serializedVersion: 2
-        x: 1051
-        y: 1488
-        width: 1051
-        height: 1488
+        x: 219
+        y: 311
+        width: 219
+        height: 311
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -135,12 +135,12 @@ TextureImporter:
       name: CharactersX1_2
       rect:
         serializedVersion: 2
-        x: 2102
-        y: 1488
-        width: 1051
-        height: 1488
+        x: 438
+        y: 311
+        width: 219
+        height: 311
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -148,12 +148,12 @@ TextureImporter:
       name: CharactersX1_3
       rect:
         serializedVersion: 2
-        x: 3153
-        y: 1488
-        width: 1051
-        height: 1488
+        x: 657
+        y: 311
+        width: 219
+        height: 311
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -161,12 +161,12 @@ TextureImporter:
       name: CharactersX1_4
       rect:
         serializedVersion: 2
-        x: 4204
-        y: 1488
-        width: 1051
-        height: 1488
+        x: 876
+        y: 311
+        width: 219
+        height: 311
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -174,90 +174,12 @@ TextureImporter:
       name: CharactersX1_5
       rect:
         serializedVersion: 2
-        x: 5255
-        y: 1488
-        width: 1051
-        height: 1488
+        x: 1095
+        y: 311
+        width: 219
+        height: 311
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: CharactersX1_6
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1051
-        height: 1488
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: CharactersX1_7
-      rect:
-        serializedVersion: 2
-        x: 1051
-        y: 0
-        width: 1051
-        height: 1488
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: CharactersX1_8
-      rect:
-        serializedVersion: 2
-        x: 2102
-        y: 0
-        width: 1051
-        height: 1488
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: CharactersX1_9
-      rect:
-        serializedVersion: 2
-        x: 3153
-        y: 0
-        width: 1051
-        height: 1488
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: CharactersX1_10
-      rect:
-        serializedVersion: 2
-        x: 4204
-        y: 0
-        width: 1051
-        height: 1488
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: CharactersX1_11
-      rect:
-        serializedVersion: 2
-        x: 5255
-        y: 0
-        width: 1051
-        height: 1488
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

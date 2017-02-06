@@ -8,6 +8,9 @@ public enum Facing { Up, Left, Down, Right };
 //Zones of the game board
 public enum Zone { None, BoardTop, BoardBottom, Hand, MainDeck, DiscardDeck, IncidentDeck, IncidentDiscardDeck, IncidentCollectDeck }
 
+/*
+    Representation of a card, attached to the actual card object.
+*/
 public abstract class Card : MonoBehaviour {
 
     public string cardName; //Card name
@@ -19,9 +22,9 @@ public abstract class Card : MonoBehaviour {
     protected bool flipped; //If true, back is facing top
     public bool enableInput;
     Zone loc; //NOTE: Only used with Card.moveZone
-    public int spriteIndex; //Stores index of sprite in the sprite array
+    public Sprite sprite; //Stores the sprite of the card
 
-    static System.Random random = new System.Random();
+    
 
     //Player owner, 0 is no one
     public int owner;
@@ -43,28 +46,50 @@ public abstract class Card : MonoBehaviour {
         cur_id++;
 
         loc = Zone.None;
-        spriteIndex = 0;
     }
 
-    IEnumerator ZoomIn()
+
+    IEnumerator ZoomIn(Player player)
     {
-        var globalBehavior = GlobalBehavior.GetInstance();
-        if (globalBehavior != null && Input.GetMouseButtonDown(1) && !globalBehavior.zoomedin)
+
+        if (player != null && Input.GetMouseButtonDown(1) && !player.zoomedIn)
         {
-            if (globalBehavior.zooming)
+            if (player.zooming)
             {
                 yield break;
             }
 
-            globalBehavior.zooming = true;
+            player.zooming = true;
 
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(0.1f);
 
-            // Code to execute after the delay
-            globalBehavior.zoomedin = true;
+            player.ui_zoomIn(this);
+
             Debug.Log("zoomed in");
 
-            globalBehavior.zooming = false;
+            player.zooming = false;
+        }
+    }
+
+    IEnumerator ZoomOut(Player player)
+    {
+        if (player != null && player.zoomedIn && (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Return))
+            )
+        {
+            if (player.zooming)
+            {
+                yield break;
+            }
+
+            player.zooming = true;
+
+            yield return new WaitForSeconds(0.1f);
+
+            // Code to execute after the delay
+            player.ui_zoomOut();
+            Debug.Log("zoomed out");
+
+            player.zooming = false;
         }
     }
 
@@ -91,29 +116,7 @@ public abstract class Card : MonoBehaviour {
         }
     }
 
-    IEnumerator ZoomOut()
-    {
-        var globalBehavior = GlobalBehavior.GetInstance();
-        
-        if (globalBehavior != null && globalBehavior.zoomedin && (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Return))
-            )
-        {
-            if (globalBehavior.zooming)
-            {
-                yield break;
-            }
-
-            globalBehavior.zooming = true;
-
-            yield return new WaitForSeconds(1.0f);
-
-            // Code to execute after the delay
-            globalBehavior.zoomedin = false;
-            Debug.Log("zoomed out");
-
-            globalBehavior.zooming = false;
-        }
-    }
+   
 
     //Called when you left-click a card when not Zoomed
     protected void Select()
@@ -121,11 +124,11 @@ public abstract class Card : MonoBehaviour {
         //For testing LZ LZ LZ
         if (this is IncidentCard)
         {
-            this.moveZone(Zone.BoardBottom, Card.random.Next(1, 9));
+            this.moveZone(Zone.BoardBottom, Utilities.random.Next(1, 9));
         }
         else
         {
-            this.moveZone(Zone.BoardTop, Card.random.Next(1, 9));
+            this.moveZone(Zone.BoardTop, Utilities.random.Next(1, 9));
         }
         //End testing
     }
@@ -232,7 +235,12 @@ public abstract class Card : MonoBehaviour {
 
     // Update is called once per frame
     protected void Update() {
-        StartCoroutine(ZoomOut());
+
+        for (int i = 0; i < Player.num_players; i++)
+        {
+            if (Player.list[i].zoomedIn)
+            StartCoroutine(ZoomOut(Player.list[i]));
+        }
 
         if (movementSpeed > 0)
         {
@@ -273,7 +281,7 @@ public abstract class Card : MonoBehaviour {
         }
     }
 
-    //Handles zooming
+    //Handles zooming and selection
     void OnMouseOver()
     {
         
@@ -281,14 +289,23 @@ public abstract class Card : MonoBehaviour {
         { 
             var globalBehavior = GlobalBehavior.GetInstance();
             //Zoom in
-            if (globalBehavior != null && Input.GetMouseButtonDown(1) && !globalBehavior.zoomedin)
+            for (int i = 0; i < Player.num_players; i++)
             {
-                StartCoroutine(ZoomIn());
-            }
-            //Select
-            else if (globalBehavior != null && Input.GetMouseButtonDown(0) && !globalBehavior.zoomedin)
-            {
-                Select();
+                Player player = Player.list[i];
+
+                if (player.isHuman())
+                {
+
+                    if (globalBehavior != null && Input.GetMouseButtonDown(1) && !globalBehavior.zoomedin)
+                    {
+                        StartCoroutine(ZoomIn(player));
+                    }
+                    //Select
+                    else if (globalBehavior != null && Input.GetMouseButtonDown(0) && !globalBehavior.zoomedin)
+                    {
+                        Select();
+                    }
+                }
             }
         }
     }

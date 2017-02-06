@@ -2,6 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+    Representation of a field (the grey blocks) belonging to a player.  Handles movement to and from these locations.
+    Automatically rearranges card to fit inside the area.
+*/
+
+//UI elements for a player field
+public enum PlayerUI { Image, Name, Life, Hand, LifeText, HandText }
+
 public class PlayerField : MonoBehaviour {
 
     //Field cards in the top row
@@ -76,7 +84,6 @@ public class PlayerField : MonoBehaviour {
     }
 
     //Gets the position of the field that belongs to the player.  Returns a vector to 0, 0, 0 if that field can't be found.
-    //Place card in either the top row or the bottom row
     public static Vector3 getPosition(int playerNum, bool top_row)
     {
         GameObject board = PlayerField.get(playerNum);
@@ -93,10 +100,10 @@ public class PlayerField : MonoBehaviour {
             return new Vector3(0, 0, 0);
         }
 
-        
-
         return new Vector3(field_trans.position.x, 1, field_trans.position.z);
     }
+
+    
 
     //Moves a card to the designated board
     //Place card in either the top row or the bottom row
@@ -365,6 +372,97 @@ public class PlayerField : MonoBehaviour {
 
             card.owner = playerNum;
         }
+    }
+
+    //Gets the position of the field that a certain UI component should go on. Returns a vector to 0, 0, 0 if that field can't be found.
+    public static Vector3 getUIPosition(int playerNum, PlayerUI component)
+    {
+        float vertOff;
+        float horOff;
+
+        Vector3 source = getPosition(playerNum, true);
+
+        switch (playerNum)
+        {
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+            case 8:
+                break;
+        }
+
+        if (source == null)
+        {
+            return new Vector3(0, 0, 0);
+        }
+
+        switch (component)
+        {
+            case PlayerUI.Image:
+                vertOff = -3;
+                horOff = -1.5f;
+                break;
+            case PlayerUI.Name:
+                vertOff = -5.0f;
+                horOff = 0;
+                break;
+            case PlayerUI.Hand:
+                vertOff = -2.5f;
+                horOff = 1.5f;
+                break;
+            case PlayerUI.Life:
+                vertOff = -3.75f;
+                horOff = 1.5f;
+                break;
+            case PlayerUI.HandText:
+                vertOff = -1.95f;
+                horOff = 2.25f;
+                break;
+            case PlayerUI.LifeText:
+                vertOff = -3.20f;
+                horOff = 2.25f;
+                break;
+            default:
+                vertOff = 0;
+                horOff = 0;
+                break;
+        }
+
+        //Players 1/2: negative hor, negative vert
+        if (playerNum == 1 || playerNum == 2)
+        {
+            return new Vector3(source.x - horOff, source.y, source.z - vertOff);
+        }
+        //Players 3/4: positive vert, negative hor
+        else if (playerNum == 3 || playerNum == 4)
+        {
+            return new Vector3(source.x + vertOff, source.y, source.z - horOff);
+        }
+
+        //Player 5/6: positive hor, positive vert 
+        else if (playerNum == 5 || playerNum == 6)
+        {
+            return new Vector3(source.x + horOff, source.y, source.z + vertOff);
+        }
+
+        //Player 7/8: negative vert, positive hor
+        else if (playerNum == 7 || playerNum == 8)
+        {
+            return new Vector3(source.x - vertOff, source.y, source.z + horOff);
+        }
+
+        return new Vector3(0, 0, 0);
     }
 
     //Removes the first card from the board

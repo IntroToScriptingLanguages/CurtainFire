@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+    Representation of a card from the incident deck.
+*/
 public class IncidentCard : Card {
     
 
@@ -27,8 +30,9 @@ public class IncidentCard : Card {
         else
         {
             //Flip front
+            CardCreator creator = GameObject.Find("Manager").GetComponent<CardCreator>();
+            CardCreator.setArt(this.gameObject, this.sprite);
             flipped = false;
-            Debug.Log("flip back");
         }
     }
 }
