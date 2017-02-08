@@ -32,6 +32,8 @@ public class PlayerField : MonoBehaviour {
     public static GameObject p7;
     public static GameObject p8;
 
+
+
     // Use this for initialization
     void Start () {
         //Setup fields
@@ -55,6 +57,8 @@ public class PlayerField : MonoBehaviour {
             field_cards_top[i] = new List<Card>();
             field_cards_bottom[i] = new List<Card>();
         }
+
+        
     }
 
     //Gets the field that belongs to the number
@@ -370,7 +374,7 @@ public class PlayerField : MonoBehaviour {
 
             card.move(target, 20);
 
-            card.owner = playerNum;
+            card.controller = playerNum;
         }
     }
 
@@ -538,7 +542,7 @@ public class PlayerField : MonoBehaviour {
                         int count = card_list.Count;
                         float vertOff = 0;
 
-                        Vector3 source = PlayerField.getPosition(current.owner, true);
+                        Vector3 source = PlayerField.getPosition(current.controller, true);
 
                         //Will try to fit a four_card formation, if that doesn't work, the card list will be shrunk to allow additional cards to fit.
                         if (count > 4)
@@ -584,7 +588,7 @@ public class PlayerField : MonoBehaviour {
                                     //Calculate offset from center of board
                                     float cardOffset = (-3.0f) + (card_count * dist_between);
 
-                                    playerNum = c_card.owner;
+                                    playerNum = c_card.controller;
 
                                     //Players 1/2: negative hor, negative vert
                                     if (playerNum == 1 || playerNum == 2)
@@ -669,7 +673,7 @@ public class PlayerField : MonoBehaviour {
                     int count = card_list.Count;
                     float vertOff = 3;
 
-                    Vector3 source = PlayerField.getPosition(current.owner, false);
+                    Vector3 source = PlayerField.getPosition(current.controller, false);
 
                     //Will try to fit a four_card formation, if that doesn't work, the card list will be shrunk to allow a sixth card to fit.
                     if (count > 4)

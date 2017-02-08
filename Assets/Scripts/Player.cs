@@ -12,13 +12,14 @@ public class Player {
     public static List<Player> list = new List<Player>();
     public static int num_players = 8;
 
-    int player_num;
+    public int player_num;
     public bool zoomedIn;
     public bool zooming;
     bool human; //If player is human or AI
     public GameObject playerCamera;
     public GameObject canvas;
     public List<Card> hand;
+    public UIElements uiElems;
 
     public int life;
     public int handSize;
@@ -39,6 +40,11 @@ public class Player {
         {
             playerCamera = GameObject.Find("Player" + player_num + "Camera");
             canvas = GameObject.Find("Player" + player_num + "UI");
+            uiElems = new UIElements(this);
+        }
+        else
+        {
+            uiElems = null;
         }
 
         life = 4;
@@ -71,7 +77,7 @@ public class Player {
             //Set size of image
             if (c is CharaCard)
             {
-                newImage_t.sizeDelta = new Vector2(496 * zoom_scale, 350 * zoom_scale);
+                newImage_t.sizeDelta = new Vector2(350 * zoom_scale, 496 * zoom_scale);
             }
             else
             {
@@ -80,6 +86,11 @@ public class Player {
 
             //Attach image to object
             image.sprite = s;
+
+            if (c is CharaCard)
+            {
+                image.rectTransform.Rotate(new Vector3(0, 0, 90));
+            }
 
             //Attach new image object to parent
             newImage.transform.SetParent(canvas.transform, false);
@@ -109,8 +120,26 @@ public class Player {
     {
         if (c != null)
         {
-
+            uiElems.addHand(c);
+            hand.Add(c);
             handSize++;
         }
+    }
+
+    //Removes a card from hand
+    public void removeHand(Card c)
+    {
+        if (handSize != 0 && c != null && hand.Contains(c))
+        {
+            hand.Remove(c);
+            handSize--;
+            c.StartCoroutine(c.setVisibleAfterDelay(0, 0.5f));
+        }
+    }
+
+    //Check if hand is empty
+    public bool handEmpty()
+    {
+        return handSize == 0;
     }
 }

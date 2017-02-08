@@ -180,6 +180,7 @@ public class CardCreator : MonoBehaviour {
     }
 
     //Creates a new character card
+    //Does not automatically rotate the card
     public static GameObject createCharacterCard(string name, Sprite sprite)
     {
         GameObject newCard = new GameObject();
@@ -195,9 +196,6 @@ public class CardCreator : MonoBehaviour {
         //Set Transform
         newCard.transform.position = new Vector3(0, 2, 0);
         newCard.transform.localScale = new Vector3(S_WIDTH_Q * NORM_MULTI, S_HEIGHT_Q * NORM_MULTI, 1);
-
-        //Set rotation
-        newCard.transform.Rotate(new Vector3(90, 0, 0));
 
         setArt(newCard, sprite);
 

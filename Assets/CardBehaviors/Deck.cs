@@ -10,10 +10,15 @@ public class Deck : MonoBehaviour {
     List<Card> deck;
     private static System.Random rng = new System.Random();
 
+    //Rotation
+    public Facing facing;
+
     // Use this for initialization
     void Start () {
         deck = new List<Card>();
-	}
+
+        facing = Facing.Up;
+    }
 
     public int count()
     {
@@ -32,7 +37,7 @@ public class Deck : MonoBehaviour {
         if (trans != null)
         {
             int deck_size = deck.Count;
-            
+            c.rotateCard(facing);
             c.move(new Vector3(trans.position.x, trans.position.y + 0.03f + (0.03f * deck_size), trans.position.z), 25);
             deck.Add(c);
         }
@@ -49,6 +54,7 @@ public class Deck : MonoBehaviour {
     {
         Card c = deck[count() - 1];
         deck.RemoveAt(count() - 1);
+        c.rotateCard(Facing.Up);
 
         if (deck.Count > 0)
         {
