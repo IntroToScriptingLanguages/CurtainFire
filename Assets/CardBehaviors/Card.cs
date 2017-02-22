@@ -19,10 +19,11 @@ public abstract class Card : MonoBehaviour {
     public int cardID;
     int testInt;
     Facing facing; //Changes card direction
-    protected bool flipped; //If true, back is facing top
+    public bool flipped; //If true, back is facing top
     public bool enableInput;
-    Zone loc; //NOTE: Only used with Card.moveZone
+    public Zone loc; //NOTE: Only used with Card.moveZone
     public Sprite sprite; //Stores the sprite of the card
+    public Sprite rear_sprite; //Stores the back sprite of the card
 
     public Transform card_t;
     
@@ -128,12 +129,12 @@ public abstract class Card : MonoBehaviour {
         {
             if (this is IncidentCard)
             {
-                this.moveZone(Zone.Stack, Utilities.random.Next(1, 9));
+                this.moveZone(Zone.Hand, Utilities.random.Next(1, 9));
                 
             }
             else
             {
-                this.moveZone(Zone.Stack, Utilities.random.Next(1, 9));
+                this.moveZone(Zone.Hand, Utilities.random.Next(1, 9));
             }
         }
         //End testing
@@ -149,7 +150,7 @@ public abstract class Card : MonoBehaviour {
         switch (card_loc)
         {
             case Zone.Hand:
-                Player oldPlayer = Player.list[new_controller - 1];
+                Player oldPlayer = Player.list[this.controller - 1];
                 oldPlayer.removeHand(this);
                 break;
             case Zone.BoardBottom:
@@ -257,11 +258,15 @@ public abstract class Card : MonoBehaviour {
     //Sets a card to only be visible to player x.  A number not within 1 to 8 inclusive makes it visible to everyone.
     public void setVisible(int x)
     {
-        Debug.Log("Set visible on " + x);
         if (x >= 1 && x <= 8)
             this.gameObject.layer = 7 + x;
         else
             this.gameObject.layer = 0;
+
+        if (flipped)
+        {
+            flip();
+        }
     }
 
     // Update is called once per frame
@@ -358,6 +363,35 @@ public abstract class Card : MonoBehaviour {
         setVisible(x);
     }
 
-    //Changes the card's direction
-    public abstract void flip();
+    //Changes whether the card is flipped
+    public void flip()
+    {
+        if (!flipped)
+        {
+            //Flip back
+            CardCreator creator = GameObject.Find("Manager").GetComponent<CardCreator>();
+            CardCreator.setArt(this.gameObject, this.rear_sprite);
+            flipped = true;
+        }
+        else
+        {
+            //Flip front
+            CardCreator creator = GameObject.Find("Manager").GetComponent<CardCreator>();
+            CardCreator.setArt(this.gameObject, this.sprite);
+            flipped = false;
+        }
+    }
+
+    public override bool Equals(object other)
+    {
+        if (other is Card)
+        {
+            Card other_card = other as Card;
+            if (other_card.cardID == this.cardID)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }

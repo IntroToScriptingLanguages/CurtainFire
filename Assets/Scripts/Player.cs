@@ -35,17 +35,10 @@ public class Player {
         human = hum;
         zoomedIn = false;
         zooming = false;
-
-        if (human)
-        {
-            playerCamera = GameObject.Find("Player" + player_num + "Camera");
-            canvas = GameObject.Find("Player" + player_num + "UI");
-            uiElems = new UIElements(this);
-        }
-        else
-        {
-            uiElems = null;
-        }
+        
+        playerCamera = GameObject.Find("Player" + player_num + "Camera");
+        canvas = GameObject.Find("Player" + player_num + "UI");
+        uiElems = new UIElements(this);
 
         life = 4;
         handSize = 0;
@@ -64,7 +57,16 @@ public class Player {
         {
             float zoom_scale = 1.3f;
 
-            Sprite s = c.sprite;
+            Sprite s;
+
+            if (c.flipped == true)
+            {
+                s = c.rear_sprite;
+            }
+            else
+            {
+                s = c.sprite;
+            }
 
             //Create new image object
             GameObject newImage = new GameObject();
@@ -133,7 +135,8 @@ public class Player {
         {
             hand.Remove(c);
             handSize--;
-            c.StartCoroutine(c.setVisibleAfterDelay(0, 0.5f));
+            c.StartCoroutine(c.setVisibleAfterDelay(0, 0.1f));
+            uiElems.resetHand();
         }
     }
 

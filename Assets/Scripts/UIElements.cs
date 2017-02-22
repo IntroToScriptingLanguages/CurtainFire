@@ -25,17 +25,56 @@ public class UIElements  {
     {
         Transform camera_t = camera.GetComponent<Transform>();
         Vector3 target_t;
+        int handSize = player.handSize;
 
+        float cardOffset = handSize * 40.0f;
+        float upOffset = handSize * 0.01f;
+
+
+        //Setup facing
         if (player_num == 1 || player_num == 2)
         {
-            target_t = camera_t.position;
+            c.rotateCard(Facing.Down);
         }
-        else
+        else if (player_num == 3 || player_num == 4)
         {
-            target_t = camera_t.position;
+            c.rotateCard(Facing.Right);
+        }
+        else if (player_num == 5 || player_num == 6)
+        {
+            c.rotateCard(Facing.Up);
+        }
+        else if (player_num == 7 || player_num == 8)
+        {
+            c.rotateCard(Facing.Left);
         }
 
+        //Setup proper movement target
+        Camera cam = camera.GetComponent<Camera>();
+        target_t = cam.ScreenToWorldPoint(new Vector3(300.0f + cardOffset, 110.0f, 15.0f - upOffset));
+
+        //Handles movement and visibility
         c.move(target_t, 30);
-        c.StartCoroutine(c.setVisibleAfterDelay(player_num, 3.2f));
+        c.StartCoroutine(c.setVisibleAfterDelay(player_num, 0.5f));
+    }
+
+    //Resets the appearance of the hand
+    public void resetHand()
+    {
+        List<Card> hand = player.hand;
+        int handSize = player.handSize;
+
+        Camera cam = camera.GetComponent<Camera>();
+
+        for (int i=0; i<handSize; i++)
+        {
+            float cardOffset = i * 40.0f;
+            float upOffset = i * 0.01f;
+
+            Card c = hand[i];
+            Vector3 target_t = cam.ScreenToWorldPoint(new Vector3(300.0f + cardOffset, 110.0f, 15.0f - upOffset));
+
+            c.move(target_t, 80);
+        }
     }
 }

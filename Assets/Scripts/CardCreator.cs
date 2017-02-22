@@ -21,7 +21,7 @@ public class CardCreator : MonoBehaviour {
     public static float L_WIDTH = 0.496f;
     public static float L_HEIGHT = 0.350f;
 
-    //Zoom multipliers
+    //Size multipliers
     public static float NORM_MULTI = 0.67f;
 
     /* FOR OBJECTS */
@@ -51,6 +51,7 @@ public class CardCreator : MonoBehaviour {
     public static bool setArt(GameObject card, Sprite art)
     {
         SpriteRenderer card_r = card.GetComponent<SpriteRenderer>();
+       
 
         if (card_r != null)
         {
@@ -82,7 +83,9 @@ public class CardCreator : MonoBehaviour {
 
         if (card_r != null)
         {
-            card_r.sprite = Resources.Load<Sprite>(art);
+            Sprite new_sprite = Resources.Load<Sprite>(art) as Sprite;
+            card_r.sprite = new_sprite;
+            //card.GetComponent<MainCard>().sprite = new_sprite;
             /*Texture2D cardArt = Resources.Load(art) as Texture2D;
             if (cardArt == null)
             {

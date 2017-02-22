@@ -119,16 +119,23 @@ public class SetupCards : MonoBehaviour {
         1, //Sorcerer's Sutra Scroll
         1 //Stopwatch
     };
+
+    List<GameObject> iCards; //Incident cards
+    List<GameObject> dCards; //Main deck cards
     
 	// Generates all the cards
 	void Start () {
+
+        iCards = new List<GameObject>();
+        dCards = new List<GameObject>();
 
         Sprite[] incidents = Resources.LoadAll<Sprite>("CardArt/Incidents");
 
         //Setup the incident deck
         for (int i = 0; i < NUM_INCIDENTS; i++)
         {
-            CardCreator.createIncidentCard(incident_names[i], incidents[i]);
+            GameObject new_card = CardCreator.createIncidentCard(incident_names[i], incidents[i]);
+            iCards.Add(new_card);
         }
 
         Sprite[] main_deck = Resources.LoadAll<Sprite>("CardArt/Deck1");
@@ -139,7 +146,8 @@ public class SetupCards : MonoBehaviour {
         {
             for (int j=0; j < deck_count[i]; j++)
             {
-                CardCreator.createMainCard(deck_names[i], main_deck[i]);
+                GameObject new_card = CardCreator.createMainCard(deck_names[i], main_deck[i]);
+                dCards.Add(new_card);
             }
 
             num_deck_cards += deck_count[i];
@@ -156,6 +164,17 @@ public class SetupCards : MonoBehaviour {
         //Fetch and randomize the character sprites
         Sprite[] charaSprites = Resources.LoadAll<Sprite>("CardArt/Characters");
         Sprite[] charaSpritesX1 = Resources.LoadAll<Sprite>("CardArt/CharactersX1");
+
+        //Flip the iCards and dCards
+        for (int i=0; i<iCards.Count; i++)
+        {
+            iCards[i].GetComponent<IncidentCard>().flip();
+        }
+
+        for (int i = 0; i < dCards.Count; i++)
+        {
+            dCards[i].GetComponent<MainCard>().flip();
+        }
 
         //Scramble characters
         for (int i=0; i<characters.Length; i++)
